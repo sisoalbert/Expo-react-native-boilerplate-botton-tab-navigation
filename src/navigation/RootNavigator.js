@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 //Screen imports
 import Homescreen from "../screens/Homescreen";
@@ -37,8 +38,24 @@ function MyTabs() {
         headerShown: false,
       }}
     >
-      <Tab.Screen name="Home" component={MyStack} />
-      <Tab.Screen name="Thanks Screen" component={ThanksScreen} />
+      <Tab.Screen
+        name="Home"
+        component={MyStack}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Thanks Screen"
+        component={ThanksScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="heart-circle" color={color} size={size} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }
