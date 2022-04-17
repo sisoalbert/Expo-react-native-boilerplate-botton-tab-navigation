@@ -1,15 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import React from "react";
 //import Header
 import Header from "../components/Header";
 
 const ThanksScreen = ({ navigation }) => {
   return (
-    <View style={{ paddingTop: 20 }}>
+    <SafeAreaView style={{ paddingTop: 25 }}>
       <Header onPress={() => navigation.toggleDrawer()} />
 
       <Text>ThanksScreen</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
