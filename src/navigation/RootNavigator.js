@@ -8,13 +8,11 @@ import ThanksScreen from "../screens/ThanksScreen";
 import Privacy from "../screens/Privacy";
 import Header from "../components/Header";
 //Navigation imports
-// import { createStackNavigator } from '@react-navigation/stack';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-// const Stack = createStackNavigator();
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
@@ -24,12 +22,26 @@ const MyStack = () => {
         headerShown: false,
       }}
     >
-      {/* <Stack.Screen name="Header" component={Header} /> */}
-      <Stack.Screen name="Home" component={Homescreen} />
+      <Stack.Screen name="HomeLanding" component={Homescreen} />
       <Stack.Screen name="Details" component={Details} />
     </Stack.Navigator>
   );
 };
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Tab.Screen name="Home" component={MyStack} />
+      <Tab.Screen name="Thanks Screen" component={ThanksScreen} />
+    </Tab.Navigator>
+  );
+}
 
 // Draw Comps
 const Drawer = createDrawerNavigator();
@@ -37,18 +49,17 @@ const Drawer = createDrawerNavigator();
 const Mydrawer = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="Home"
+      // initialRouteName="Home"
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Drawer.Screen name="Lists" component={MyStack} />
+      <Drawer.Screen name="App" component={MyTabs} />
       <Drawer.Screen name="Special Thanks" component={ThanksScreen} />
       <Drawer.Screen name="Privacy Policy" component={Privacy} />
     </Drawer.Navigator>
   );
 };
-
 const RootNavigator = () => {
   return (
     <NavigationContainer>
